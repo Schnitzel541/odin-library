@@ -63,6 +63,10 @@ function promptUserForBook() {
     const newBook = new Book(name, author, year, pageCount, read);
     newBook.addToArray();
 }
+
+
+// This will call the function 3 times, enabling the user to add 3 books
+// This is obviously suboptimal, made to check if this functionality works
 promptUserForBook();
 promptUserForBook();
 promptUserForBook();
