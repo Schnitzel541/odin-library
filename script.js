@@ -1,21 +1,6 @@
 const bookCardContainer = document.querySelector('.container');
-const spanBookName = document.querySelector('bookName');
-const spanBookAuthor = document.querySelector('bookAuthor');
-const spanBookPages = document.querySelector('bookName');
 
-
-const myLibrary = [{
-    name: "1984",
-    author: "George Orwell",
-    pages: 207,
-    read: false,
-},
-{
-    name: "1985",
-    author: "George Orwell",
-    pages: 207,
-    read: false,
-}]
+const myLibrary = [{}, {}, {}]
 
 function Book(name, author, pages, read) {
     this.name = name,
@@ -58,5 +43,11 @@ function displayBook(arr) {
         })
     }
 }
+
+
+const modal = document.querySelector(".modal")
+const openModalButton = document.querySelector("#openModal");
+openModalButton.addEventListener('click', () => {
+    modal.showModal();})
 
 displayBook(myLibrary);

@@ -51,7 +51,7 @@ header > button {
     box-shadow: 1px 1px 5px rgb(198, 198, 198);
 }
 
-.bookButtons {
+button {
     font-size: 1.6rem;
     border: none;
     background-color: rgb(255, 176, 176);

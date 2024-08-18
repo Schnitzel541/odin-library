@@ -8,9 +8,20 @@
   </head>
   <body>
     <header><strong>Library</strong>
-    <button>Add Book</button></header>
+    <button id="openModal">Add Book</button></header>
     <div class="container">
     </div>
+    <dialog class="modal">
+      <form method="post">
+      <label for="bookName">Name:</label>
+      <input id="bookNameInput" type="text" placeholder="Book Name">
+      <label for="bookAuthor">Author:</label>
+      <input id="bookAuthorInput" type="text" placeholder="Author">
+      <label for="bookPages">Pages</label>
+      <input id="bookPagesInput" type="number">
+      <button>Add Book!</button>
+      </form>
+    </dialog>
     <script src="script.js"></script>
   </body>
 </html>
