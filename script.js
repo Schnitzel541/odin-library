@@ -1,6 +1,6 @@
 const bookCardContainer = document.querySelector('.container');
 
-const myLibrary = [{}, {}, {}]
+const myLibrary = []
 
 function Book(name, author, pages, read) {
     this.name = name,
@@ -45,9 +45,27 @@ function displayBook(arr) {
 }
 
 
+function addBookToLibrary() {
+    const nameInput = document.querySelector("#bookNameInput").value;
+    const authorInput = document.querySelector("#bookAuthorInput").value;
+    const pagesInput = document.querySelector("#bookPagesInput").value;
+
+    const newBook = new Book(nameInput, authorInput, pagesInput, false);
+    myLibrary.push(newBook);
+    displayBook(myLibrary);
+}
+
 const modal = document.querySelector(".modal")
 const openModalButton = document.querySelector("#openModal");
 openModalButton.addEventListener('click', () => {
-    modal.showModal();})
+    modal.showModal();
+})
+
+const addBookButton = document.querySelector("#addBookButton");
+addBookButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    addBookToLibrary();
+    modal.close();
+})
 
 displayBook(myLibrary);
