@@ -1,70 +1,62 @@
-const myLibrary = [];
+const bookCardContainer = document.querySelector('.container');
+const spanBookName = document.querySelector('bookName');
+const spanBookAuthor = document.querySelector('bookAuthor');
+const spanBookPages = document.querySelector('bookName');
 
-function Book(name, author, year, pageCount, read) {
-  (this.name = name),
-    (this.author = author),
-    (this.year = year),
-    (this.pageCount = pageCount),
-    (this.read = read);
-}
 
-Book.prototype.addToArray = function () {
-  myLibrary.push(this);
+const myLibrary = [{
+    name: "1984",
+    author: "George Orwell",
+    pages: 207,
+    read: false,
+},
+{
+    name: "1985",
+    author: "George Orwell",
+    pages: 207,
+    read: false,
+}]
+
+function Book(name, author, pages, read) {
+    this.name = name,
+    this.author = author,
+    this.pages = pages,
+    this.read = read;
 };
 
-function displayBooks() {
-  let table = document.querySelector("table");
-  if (!table) {
-    document.createElement("table");
-    document.body.appendChild(table);
-  }
+function displayBook(arr) {
+    const bookCardContainer = document.querySelector('.container');
+    bookCardContainer.innerHTML = "";
+    for (let i = 0; i < arr.length; i++) {
+        const books = document.createElement("div");
+        books.classList.add("bookCard")
+        bookCardContainer.appendChild(books);
 
-  let tbody = table.querySelector("tbody");
-  if (!tbody) {
-    document.createElement("tbody");
-    table.appendChild(tbody);
-  }
+        const bookName = document.createElement("div");
+        bookName.classList.add("bookText");
+        bookName.innerHTML = `<strong>Name:</strong> ${arr[i].name}`
+        books.appendChild(bookName);
 
-  myLibrary.forEach((book) => {
-    let newRow = document.createElement("tr");
+        const bookAuthor = document.createElement("div");
+        bookAuthor.classList.add("bookText");
+        bookAuthor.innerHTML = `<strong>Name:</strong> ${arr[i].author}`
+        books.appendChild(bookAuthor);
 
-    let nameCell = document.createElement("td");
-    nameCell.textContent = book.name;
-    newRow.appendChild(nameCell);
+        const bookPages = document.createElement("div");
+        bookPages.classList.add("bookText");
+        bookPages.innerHTML = `<strong>Pages:</strong> ${arr[i].pages}`
+        books.appendChild(bookPages);
 
-    let authorCell = document.createElement("td");
-    authorCell.textContent = book.author;
-    newRow.appendChild(authorCell);
+        const bookButtons = document.createElement("div");
+        bookButtons.classList.add("buttonContainer");
+        bookButtons.innerHTML = `<button>Delete</button><button>Read</button>`
+        books.appendChild(bookButtons)
 
-    let yearCell = document.createElement("td");
-    yearCell.textContent = book.year;
-    newRow.appendChild(yearCell);
-
-    let pageCountCell = document.createElement("td");
-    pageCountCell.textContent = book.pageCount;
-    newRow.appendChild(pageCountCell);
-
-    let readCell = document.createElement("td");
-    readCell.textContent = book.read;
-    newRow.appendChild(readCell);
-
-    tbody.appendChild(newRow);
-  });
+        const buttons = document.querySelectorAll("button");
+        buttons.forEach((button) => {
+            button.classList.add("bookButtons")
+        })
+    }
 }
 
-function promptUserForBook() {
-  const name = prompt("Enter the name of the book");
-  const author = prompt("Enter the author of the book");
-  const year = prompt("Enter the year of the book");
-  const pageCount = prompt("Enter the amount of pages of the book");
-  const read = prompt("Have you read this book?");
-
-  const newBook = new Book(name, author, year, pageCount, read);
-  newBook.addToArray();
-  displayBooks();
-}
-
-const addButton = document.querySelector("#add-btn");
-addButton.addEventListener("click", () => {
-  promptUserForBook();
-});
+displayBook(myLibrary);
