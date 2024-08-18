@@ -1,29 +1,29 @@
 const myLibrary = [];
 
 function Book(name, author, year, pageCount, read) {
-    this.name = name,
-    this.author = author,
-    this.year = year,
-    this.pageCount = pageCount,
-    this.read = read;
+  (this.name = name),
+    (this.author = author),
+    (this.year = year),
+    (this.pageCount = pageCount),
+    (this.read = read);
 }
 
-Book.prototype.addToArray = function() {
-    myLibrary.push(this)
-}
+Book.prototype.addToArray = function () {
+  myLibrary.push(this);
+};
 
 function displayBooks() {
-    let table = document.querySelector("table");
-    if (!table) {
-        document.createElement("table")
-        document.body.appendChild(table);
-    }
+  let table = document.querySelector("table");
+  if (!table) {
+    document.createElement("table");
+    document.body.appendChild(table);
+  }
 
-    let tbody = table.querySelector("tbody");
-    if (!tbody) {
-        document.createElement("tbody");
-        table.appendChild(tbody)
-    }
+  let tbody = table.querySelector("tbody");
+  if (!tbody) {
+    document.createElement("tbody");
+    table.appendChild(tbody);
+  }
 
   myLibrary.forEach((book) => {
     let newRow = document.createElement("tr");
@@ -32,43 +32,39 @@ function displayBooks() {
     nameCell.textContent = book.name;
     newRow.appendChild(nameCell);
 
-    let authorCell = document.createElement('td');
+    let authorCell = document.createElement("td");
     authorCell.textContent = book.author;
     newRow.appendChild(authorCell);
-    
-    let yearCell = document.createElement('td');
+
+    let yearCell = document.createElement("td");
     yearCell.textContent = book.year;
     newRow.appendChild(yearCell);
 
-    let pageCountCell = document.createElement('td');
+    let pageCountCell = document.createElement("td");
     pageCountCell.textContent = book.pageCount;
     newRow.appendChild(pageCountCell);
 
-    let readCell = document.createElement('td');
+    let readCell = document.createElement("td");
     readCell.textContent = book.read;
     newRow.appendChild(readCell);
 
     tbody.appendChild(newRow);
-
-});
+  });
 }
 
 function promptUserForBook() {
-    const name = prompt("Enter the name of the book");
-    const author = prompt("Enter the author of the book");
-    const year = prompt("Enter the year of the book");
-    const pageCount = prompt("Enter the amount of pages of the book");
-    const read = prompt("Have you read this book?");
+  const name = prompt("Enter the name of the book");
+  const author = prompt("Enter the author of the book");
+  const year = prompt("Enter the year of the book");
+  const pageCount = prompt("Enter the amount of pages of the book");
+  const read = prompt("Have you read this book?");
 
-    const newBook = new Book(name, author, year, pageCount, read);
-    newBook.addToArray();
+  const newBook = new Book(name, author, year, pageCount, read);
+  newBook.addToArray();
+  displayBooks();
 }
 
-
-// This will call the function 3 times, enabling the user to add 3 books
-// This is obviously suboptimal, made to check if this functionality works
-promptUserForBook();
-promptUserForBook();
-promptUserForBook();
-
-displayBooks();
+const addButton = document.querySelector("#add-btn");
+addButton.addEventListener("click", () => {
+  promptUserForBook();
+});
