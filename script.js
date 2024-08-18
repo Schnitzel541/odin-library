@@ -1,9 +1,15 @@
+const myLibrary = [];
+
 function Book(name, author, year, pageCount, read) {
     this.name = name,
     this.author = author,
     this.year = year,
     this.pageCount = pageCount,
     this.read = read;
+}
+
+Book.prototype.addToArray = function() {
+    myLibrary.push(this)
 }
 
 function displayBooks() {
@@ -47,10 +53,18 @@ function displayBooks() {
 });
 }
 
-const harryPotter = new Book("Harry Potter", "J.K. Rowling", 1995, 342, false);
-const lordOfTheRings = new Book("Lord of the rings", "J.R.R Tolkien", 1899, 342, true);
-const orwell1984 = new Book("1984", "George Orwell", 1950, 342, true);
+function promptUserForBook() {
+    const name = prompt("Enter the name of the book");
+    const author = prompt("Enter the author of the book");
+    const year = prompt("Enter the year of the book");
+    const pageCount = prompt("Enter the amount of pages of the book");
+    const read = prompt("Have you read this book?");
 
-const myLibrary = [harryPotter, lordOfTheRings, orwell1984];
+    const newBook = new Book(name, author, year, pageCount, read);
+    newBook.addToArray();
+}
+promptUserForBook();
+promptUserForBook();
+promptUserForBook();
 
 displayBooks();
