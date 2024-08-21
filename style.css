@@ -84,3 +84,7 @@ input {
 #addBookButton {
     margin-top: 40px;
 }
+
+.displayNone {
+    display: none;
+}
