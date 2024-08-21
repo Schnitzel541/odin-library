@@ -78,11 +78,27 @@ openModalButton.addEventListener("click", () => {
   modal.showModal();
 });
 
+const warning = document.createElement("div");
 const addBookButton = document.querySelector("#addBookButton");
 addBookButton.addEventListener("click", (event) => {
+
+  const bookNameInput = document.getElementById("#bookNameInput");
+  const bookAuthorInput = document.querySelector("#bookAuthorInput");
+  const bookPagesInput = document.querySelector("#bookPagesInput");
   event.preventDefault();
-  addBookToLibrary();
-  modal.close();
+  if (bookPagesInput.value !== "" && bookPagesInput.value !== isNaN){
+    if (bookNameInput !== "" && bookAuthorInput !== "") {
+      addBookToLibrary();
+      warning.textContent = ""
+      modal.close();
+    }
+  }
+  else {
+    warning.style.color = "red";
+    warning.style.textAlign = "center";
+    warning.textContent = "Please fill out all fields"
+    modal.appendChild(warning)
+  }
 });
 
 function getLastInArray() {
