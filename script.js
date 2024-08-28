@@ -31,7 +31,7 @@ function displayBook(arr) {
 
     const bookAuthor = document.createElement("div");
     bookAuthor.classList.add("bookText");
-    bookAuthor.innerHTML = `<strong>Name:</strong> ${arr[i].author}`;
+    bookAuthor.innerHTML = `<strong>Author:</strong> ${arr[i].author}`;
     books.appendChild(bookAuthor);
 
     const bookPages = document.createElement("div");
@@ -61,7 +61,7 @@ function addBookToLibrary() {
   console.log(newBook);
 }
 
-const lotr = new Book("Lord of the Rings", "1137", "J.R.R. Tolkien", false)
+const lotr = new Book("Lord of the Rings", "J.R.R. Tolkien", "1137", false)
 myLibrary.push(lotr);
 
 
