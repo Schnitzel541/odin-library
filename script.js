@@ -2,14 +2,15 @@ const bookCardContainer = document.querySelector(".container");
 
 let myLibrary = [];
 
-function Book(name, author, pages, read, uniqueId) {
-  (this.name = name),
-    (this.author = author),
-    (this.pages = pages),
-    (this.read = read),
-    (this.uniqueId = Book.incrementId());
+class Book {
+  constructor(name, author, pages, read, uniqueId) {
+    this.name = name,
+    this.author = author,
+    this.pages = pages,
+    this.read = read,
+    this.uniqueId = Book.incrementId();
+  }
 }
-
 
 Book.currentId = 0;
 Book.incrementId = function () {
